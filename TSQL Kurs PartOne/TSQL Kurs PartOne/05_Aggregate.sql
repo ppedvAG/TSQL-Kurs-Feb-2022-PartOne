@@ -124,6 +124,17 @@ select top 1  lastname , sum(unitprice*quantity) as Umsatz
 
 	--Alternative : @Table  max 1000 DS, tmpTabelle fixe tabelle
 
+	--Wieivel in Graz.. wieviel in Österreich, Weltweit.. 3 Abfragen sein
+	--wenn 1  Abfrage
+
+	--was macht Cube und was macht rollup
+	select country, city, count(*) from customers
+	group by country, city with cube  --160
+	order by 1,2
+
+	select country, city, count(*), GROUPING_ID(country, city) from customers --Grouping_ID =  Ebene
+	group by country, city with rollup --91--> Zwischenergebnis
+	order by 1,2
 
 
 
