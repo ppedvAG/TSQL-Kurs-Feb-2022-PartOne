@@ -64,3 +64,14 @@ select * from cte where Rang1 = 1 or Rang2 = 1
 
 
 
+		with cte
+		as
+		(	
+		select companyname, o.orderid, sum(unitprice * quantity) as RngSumme,
+			rank() over (partition by companyname order by sum(unitprice * quantity) desc) as RANG
+			from customers c
+												inner join orders o on c.CustomerID = o.CustomerID
+												inner join [Order Details] od on od.orderid = o.OrderID
+			group by companyname, o.orderid
+			)
+			select * from cte where Rang = 1
