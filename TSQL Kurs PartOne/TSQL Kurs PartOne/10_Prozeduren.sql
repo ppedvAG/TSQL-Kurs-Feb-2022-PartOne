@@ -179,5 +179,10 @@ select * from orders where freight < @schnitt
 --und welche Orders liegen unter diesen Schnitt
 
 
+--mit anderen User ausführen
+--Caller Owner Alternativ
 
-
+CREATE PROCEDURE dbo.usp_Demo  
+WITH EXECUTE AS 'CompanyDomain\SqlUser1'  
+AS  
+SELECT user_name();  

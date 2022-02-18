@@ -1,5 +1,9 @@
 # TSQL Kurs Feb 2022 PartOne
 
+where SEEK
+SCAN
+
+
 # Intro
 ## nicht mehr so einfache where Abfragen
 ## logischer Fluss
@@ -38,4 +42,5 @@ TOP DISTINCT EXCEPT INTERSECT UNION ORDER BY
 # Transaktionen
 
 # Troubleshooting
+#
 
