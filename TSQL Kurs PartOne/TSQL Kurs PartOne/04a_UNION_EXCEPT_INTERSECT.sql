@@ -83,3 +83,41 @@ from orders
 
 
 
+
+--Kopie best Datensätze zum Spielen
+	
+select customerid, companyname, country, city 
+into #t 
+from customers 
+where country in ('Italy', 'Austria', 'Germany')
+
+select * from #t
+
+
+update #t set city = 'Wien'  where customerid = 'ERNSH'
+
+update customers set city = 'Bonn' where customerid = 'ALFKI'
+
+
+--INTERSECT
+select customerid, companyname, country from customers
+intersect
+select customerid, companyname, country from #t
+
+select customerid, companyname, country, city from customers
+intersect
+select customerid, companyname, country , city from #t
+
+select customerid, companyname, country from customers
+EXCEPT
+select customerid, companyname, country from #t
+INTERSECT
+select customerid, companyname, country from #t
+EXCEPT
+select customerid, companyname, country from #t
+
+
+select customerid, companyname, country, city from #t
+EXCEPT
+select customerid, companyname, country, city from customers
+
